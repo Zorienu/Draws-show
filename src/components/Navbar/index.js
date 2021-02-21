@@ -16,8 +16,8 @@ const Navbar = () => {
             Draws' show
           </Typography>
           <img className={classes.image} src={pencil} alt="pencil" />
-          <Button className={classes.logout} variant="contained">
-            logout
+          <Button className={classes.logout} variant="outlined">
+            sign in
           </Button>
         </Toolbar>
       </AppBar>

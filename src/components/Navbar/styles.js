@@ -1,9 +1,10 @@
 import { makeStyles } from "@material-ui/core";
 
+//background: "linear-gradient(to right, #0083b0, #00b4db)",
 export default makeStyles(() => ({
   appBar: {
-    background: "linear-gradient(to right, #0083b0, #00b4db)",
-    color: "#fff",
+    background: "linear-gradient(to bottom, #fff, #eee)",
+    color: "#111",
     height: "64px",
   },
   navBar: {
