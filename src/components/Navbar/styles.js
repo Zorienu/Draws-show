@@ -11,15 +11,12 @@ export default makeStyles(() => ({
     display: "flex",
   },
   image: {
-    height: "100%",
+    height: "64px",
     transform: "scaleX(-1)",
   },
   logo: {
     fontFamily: "Permanent Marker",
     lineHeight: "1.5",
-  },
-  logout: {
-    marginLeft: "auto",
   },
   offset: {
     marginTop: "100px",

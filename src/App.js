@@ -1,28 +1,34 @@
 import "./App.css";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core/styles";
 
 // components
 import Home from "pages/Home";
 import Navbar from "components/Navbar";
 import Login from "pages/Login";
 
+// theme
+import theme from "./theme.js";
+
 function App() {
   return (
-    <Container maxWidth="lg">
+    <ThemeProvider theme={theme}>
       <Navbar />
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-        </Switch>
-      </Router>
-    </Container>
+      <Container maxWidth="md">
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+          </Switch>
+        </Router>
+      </Container>
+    </ThemeProvider>
   );
 }
 
