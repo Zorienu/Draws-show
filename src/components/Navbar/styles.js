@@ -5,10 +5,10 @@ export default makeStyles(() => ({
   appBar: {
     background: "linear-gradient(to bottom, #fff, #eee)",
     color: "#111",
-    height: "64px",
   },
   navBar: {
     display: "flex",
+    justifyContent: "space-between",
   },
   image: {
     height: "64px",
