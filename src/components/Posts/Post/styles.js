@@ -10,6 +10,5 @@ export default makeStyles((theme) => ({
   comment: {
     width: "100%",
     height: "300px",
-    position: "relative",
   },
 }));
