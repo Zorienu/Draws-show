@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { Accordion, makeStyles } from "@material-ui/core";
 
 import Comment from "./Comment";
 

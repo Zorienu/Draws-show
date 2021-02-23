@@ -23,7 +23,8 @@ const Post = ({ img }) => {
   const { author, download_url: url, id, height, width } = img;
   const ratio = height / width;
   const containerHeight = 547.188 * ratio;
-  console.log(containerHeight);
+
+  const [isLiked, setIsLiked] = useState(false);
 
   return (
     <Grid item xs={12} md={12}>
@@ -33,6 +34,16 @@ const Post = ({ img }) => {
           <AvatarAndName name={author} />
           <Typography variant="subtitle1">Comments</Typography>
           <Comments />
+          <div>
+            <Button
+              onClick={() => setIsLiked(!isLiked)}
+              startIcon={isLiked ? <Favorite /> : <FavoriteBorder />}
+              color={isLiked ? "secondary" : "default"}
+              className={classes.likeButton}
+            >
+              4 likes
+            </Button>
+          </div>
           <AddComment />
         </CardContent>
       </Card>
