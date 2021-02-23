@@ -1,20 +1,22 @@
 import { useState } from "react";
 import {
+  Collapse,
+  IconButton,
   Paper,
   Grid,
   Typography,
   Button,
-  Avatar,
   Box,
   Card,
-  CardMedia,
   CardContent,
 } from "@material-ui/core";
-import { Favorite, FavoriteBorder, ModeCommentOutlined } from "@material-ui/icons";
+import { Favorite, FavoriteBorder, ExpandMore } from "@material-ui/icons";
 
 import AvatarAndName from "components/AvatarAndName";
 import Comments from "components/Comments";
 import AddComment from "components/AddComment";
+import LikeButton from "components/LikeButton";
+import Description from "components/Description";
 
 import useStyles from "./styles.js";
 
@@ -25,29 +27,35 @@ const Post = ({ img }) => {
   const containerHeight = 547.188 * ratio;
 
   const [isLiked, setIsLiked] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+
+  const handleLike = () => setIsLiked(!isLiked);
 
   return (
     <Grid item xs={12} md={12}>
       <Card className={classes.root} style={{ height: containerHeight }}>
-        <img className={classes.img} src={url} alt={author} />
+        <img className={classes.img} src={url} alt={author} onDoubleClick={handleLike} />
         <CardContent className={classes.content}>
           <AvatarAndName name={author} />
-
-          <div>
-            <Button
-              onClick={() => setIsLiked(!isLiked)}
-              startIcon={isLiked ? <Favorite /> : <FavoriteBorder />}
-              color={isLiked ? "secondary" : "default"}
-              className={classes.likeButton}
-            >
-              4 likes
-            </Button>
-          </div>
-
-          <AddComment />
+          <Description />
+          <LikeButton onClick={handleLike} isLiked={isLiked} />
         </CardContent>
       </Card>
-      <Comments />
+
+      <Paper className={classes.commentContainer} elevation={3}>
+        <Box display="flex">
+          <Typography className={classes.commentSubtitle} variant="h6">
+            Comments
+          </Typography>
+          <IconButton onClick={() => setShowComments(!showComments)}>
+            <ExpandMore />
+          </IconButton>
+        </Box>
+        <Collapse in={showComments}>
+          <Comments />
+        </Collapse>
+        <AddComment />
+      </Paper>
     </Grid>
   );
 };

@@ -13,5 +13,11 @@ export default makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
   },
-  likeButton: {},
+  commentContainer: {
+    padding: "10px",
+    marginTop: "10px",
+  },
+  commentSubtitle: {
+    flex: 1,
+  },
 }));
