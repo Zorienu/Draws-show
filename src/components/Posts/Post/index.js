@@ -32,8 +32,7 @@ const Post = ({ img }) => {
         <img className={classes.img} src={url} alt={author} />
         <CardContent className={classes.content}>
           <AvatarAndName name={author} />
-          <Typography variant="subtitle1">Comments</Typography>
-          <Comments />
+
           <div>
             <Button
               onClick={() => setIsLiked(!isLiked)}
@@ -44,9 +43,11 @@ const Post = ({ img }) => {
               4 likes
             </Button>
           </div>
+
           <AddComment />
         </CardContent>
       </Card>
+      <Comments />
     </Grid>
   );
 };

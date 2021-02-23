@@ -1,12 +1,4 @@
-import {
-  Icon,
-  IconButton,
-  Box,
-  Avatar,
-  TextField,
-  FormControl,
-  makeStyles,
-} from "@material-ui/core";
+import { IconButton, Box, Avatar, TextField, makeStyles } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 
 const useStyles = makeStyles((theme) => ({
