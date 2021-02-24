@@ -5,3 +5,5 @@ const API = axios.create({
 });
 
 export const fetchPosts = () => API.get("/posts");
+export const createComment = (id, newComment) =>
+  API.patch(`/posts/${id}`, { comments: newComment });

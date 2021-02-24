@@ -11,10 +11,10 @@ import Description from "components/Description";
 import useStyles from "./styles.js";
 import useContainerHeight from "hooks/useContainerHeight.js";
 
-const Post = ({ img }) => {
+const Post = ({ post }) => {
   const classes = useStyles();
 
-  const { author, selectedFile: url, description, comments } = img;
+  const { author, selectedFile: url, description, comments, _id: id } = post;
   const containerHeight = useContainerHeight(url);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -31,7 +31,7 @@ const Post = ({ img }) => {
         </CardContent>
       </Card>
 
-      <Comments comments={comments} />
+      <Comments comments={comments} postId={id} />
     </Grid>
   );
 };

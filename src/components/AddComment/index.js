@@ -1,6 +1,10 @@
 import { IconButton, Box, Avatar, TextField, makeStyles } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 
+import { useDispatch } from "react-redux";
+
+import { createComment } from "redux/postsSlice";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "10px 0",
@@ -15,8 +19,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddComment = () => {
+const AddComment = ({ id }) => {
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+
+  const handleCreateComment = () => {
+    console.log("handle create comment");
+    dispatch(createComment({ id, comment: "holaaaa desde redux" }));
+  };
 
   return (
     <Box display="flex" alignItems="center">
@@ -28,7 +39,7 @@ const AddComment = () => {
         color="primary"
         fullWidth
       />
-      <IconButton>
+      <IconButton onClick={handleCreateComment}>
         <SendIcon />
       </IconButton>
     </Box>

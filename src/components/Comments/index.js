@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Comments = ({ comments }) => {
+const Comments = ({ comments, postId }) => {
   const classes = useStyles();
   const [showComments, setShowComments] = useState(false);
 
@@ -45,14 +45,16 @@ const Comments = ({ comments }) => {
           <ExpandMore />
         </IconButton>
       </Box>
+
       <Collapse in={showComments}>
         <div className={classes.comments}>
-          {comments.map((comment) => (
-            <Comment comment={comment} />
+          {comments.map((comment, index) => (
+            <Comment comment={comment} key={`${postId}-${index}`} />
           ))}
         </div>
       </Collapse>
-      <AddComment />
+
+      <AddComment id={postId} />
     </Paper>
   );
 };
