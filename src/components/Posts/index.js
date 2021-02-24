@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 import { getImages } from "api/Images";
 import Post from "./Post";
 
+import { fetchPosts } from "api";
+
 const Posts = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    getImages().then(({ data }) => setImages(data));
+    //getImages().then(({ data }) => setImages(data));
+    fetchPosts().then(({ data }) => setImages(data));
   }, []);
 
   return (

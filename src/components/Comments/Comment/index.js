@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Comment = () => {
+const Comment = ({ comment }) => {
   const classes = useStyles();
 
   return (
@@ -22,9 +22,7 @@ const Comment = () => {
       <Avatar className={classes.avatar}>J</Avatar>
       <div className={classes.content}>
         <Typography variant="subtitle2">Jasyd Caballero</Typography>
-        <Typography variant="body2">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, ipsum.
-        </Typography>
+        <Typography variant="body2">{comment}</Typography>
       </div>
     </div>
   );
