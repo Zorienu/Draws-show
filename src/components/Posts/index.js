@@ -13,7 +13,6 @@ const Posts = () => {
   console.log(posts);
 
   useEffect(() => {
-    //fetchPosts().then(({ data }) => setImages(data));
     dispatch(getPosts());
   }, [dispatch]);
 

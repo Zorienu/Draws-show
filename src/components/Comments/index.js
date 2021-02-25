@@ -48,8 +48,8 @@ const Comments = ({ comments, postId }) => {
 
       <Collapse in={showComments}>
         <div className={classes.comments}>
-          {comments.map((comment, index) => (
-            <Comment comment={comment} key={`${postId}-${index}`} />
+          {comments.map((comment) => (
+            <Comment comment={comment} key={comment._id} />
           ))}
         </div>
       </Collapse>

@@ -21,8 +21,8 @@ const Comment = ({ comment }) => {
     <div className={classes.root}>
       <Avatar className={classes.avatar}>J</Avatar>
       <div className={classes.content}>
-        <Typography variant="subtitle2">Jasyd Caballero</Typography>
-        <Typography variant="body2">{comment}</Typography>
+        <Typography variant="subtitle2">{comment.author}</Typography>
+        <Typography variant="body2">{comment.comment}</Typography>
       </div>
     </div>
   );

@@ -26,7 +26,12 @@ const AddComment = ({ id }) => {
 
   const handleCreateComment = () => {
     console.log("handle create comment");
-    dispatch(createComment({ id, comment: "holaaaa desde redux" }));
+    dispatch(
+      createComment({
+        id,
+        comment: { comment: "hola desde redux", author: "jasyd", authorId: "jasydId" },
+      })
+    );
   };
 
   return (

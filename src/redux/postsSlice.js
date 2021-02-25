@@ -27,10 +27,9 @@ export const postsSlice = createSlice({
     },
     [createComment.fulfilled]: (state, action) => {
       const postId = action.payload._id;
-      state.value = [
-        ...state.value.filter((post) => post._id !== postId),
-        action.payload,
-      ];
+      state.value = state.value.map((post) =>
+        post._id === postId ? action.payload : post
+      );
     },
   },
 });

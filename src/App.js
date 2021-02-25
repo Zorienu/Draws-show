@@ -7,7 +7,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 // components
 import Home from "pages/Home";
 import Navbar from "components/Navbar";
-import Login from "pages/Login";
+import Auth from "pages/Auth";
 
 // theme
 import theme from "./theme.js";
@@ -22,8 +22,8 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/login">
-              <Login />
+            <Route path="/auth">
+              <Auth />
             </Route>
           </Switch>
         </Router>
