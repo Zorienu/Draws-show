@@ -10,4 +10,4 @@ export const createComment = (id, newComment) =>
   API.patch(`/posts/${id}/addComment`, { newComment });
 
 // user
-export const login = (credentials) => API.post("/users/signin");
+export const signin = (credentials) => API.post("/users/signin", credentials);

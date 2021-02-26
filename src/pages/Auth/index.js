@@ -5,6 +5,9 @@ import Input from "components/Input";
 
 import useStyle from "./style.js";
 
+import { useDispatch } from "react-redux";
+import { signin } from "redux/userSlice";
+
 const initialState = {
   firstName: "",
   lastName: "",
@@ -20,6 +23,8 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [data, setData] = useState(initialState);
 
+  const dispatch = useDispatch();
+
   const handleShowPassword = () => {
     console.log("aa");
     setShowPassword(!showPassword);
@@ -30,7 +35,13 @@ const Auth = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    if (isSignup) {
+      console.log("sign up");
+    } else {
+      dispatch(signin(data));
+    }
+  };
 
   return (
     <Container maxWidth="xs">
@@ -86,7 +97,12 @@ const Auth = () => {
             )}
 
             <Grid item xs={12}>
-              <Button variant="contained" color="primary" fullWidth>
+              <Button
+                onClick={handleSubmit}
+                variant="contained"
+                color="primary"
+                fullWidth
+              >
                 {isSignup ? "Sign up" : "Sign in"}
               </Button>
             </Grid>
