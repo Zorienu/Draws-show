@@ -1,4 +1,4 @@
-import { Container, Grid, Paper, TextField, Typography } from "@material-ui/core";
+import { Button, Container, Grid, Paper, TextField, Typography } from "@material-ui/core";
 import { useState } from "react";
 
 import Input from "components/Input";
@@ -16,7 +16,7 @@ const initialState = {
 const Auth = () => {
   const classes = useStyle();
 
-  const [isSignup, setIsSignup] = useState(true);
+  const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [data, setData] = useState(initialState);
 
@@ -58,12 +58,14 @@ const Auth = () => {
                 />
               </>
             )}
+
             <Input
               label="email"
               name="email"
               value={data.email}
               handleChange={handleChange}
             />
+
             <Input
               label="password"
               name="password"
@@ -82,6 +84,19 @@ const Auth = () => {
                 type="password"
               />
             )}
+
+            <Grid item xs={12}>
+              <Button variant="contained" color="primary" fullWidth>
+                {isSignup ? "Sign up" : "Sign in"}
+              </Button>
+            </Grid>
+            <Grid item>
+              {!isSignup && (
+                <Button fullWidth onClick={() => setIsSignup(!isSignup)}>
+                  Don't have an account yet? create one
+                </Button>
+              )}
+            </Grid>
           </Grid>
         </form>
       </Paper>
