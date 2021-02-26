@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import decode from "jwt-decode";
 
 import * as API from "api";
 
@@ -11,13 +12,15 @@ const signin = createAsyncThunk("user/signin", async (arg, thunkAPI) => {
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    token: localStorage.getItem("token"),
+    profile: localStorage.getItem("profile") || null,
   },
   reducers: {},
   extraReducers: {
     [signin.fulfilled]: (state, action) => {
       const token = action.payload;
-      state.token = token;
+      const decodedToken = decode(token);
+      state.profile = decodedToken;
+      localStorage.setItem("profile", decodedToken);
       localStorage.setItem("token", token);
     },
   },
