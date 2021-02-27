@@ -13,8 +13,8 @@ API.interceptors.request.use((config) => {
 
 // posts
 export const fetchPosts = () => API.get("/posts");
-export const createComment = (id, newComment) =>
-  API.patch(`/posts/${id}/addComment`, { newComment });
+export const createComment = (id, comment) =>
+  API.patch(`/posts/${id}/addComment`, { comment });
 
 // user
 export const signin = (credentials) => API.post("/users/signin", credentials);
