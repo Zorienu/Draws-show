@@ -1,12 +1,13 @@
 import { Button, Container, Grid, Paper, TextField, Typography } from "@material-ui/core";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import Input from "components/Input";
 
 import useStyle from "./style.js";
 
 import { useDispatch } from "react-redux";
-import { signin } from "redux/userSlice";
+import { signin, signup } from "redux/userSlice";
 
 const initialState = {
   firstName: "",
@@ -24,22 +25,22 @@ const Auth = () => {
   const [data, setData] = useState(initialState);
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleShowPassword = () => {
-    console.log("aa");
     setShowPassword(!showPassword);
   };
 
   const handleChange = (e) => {
-    console.log("aaa");
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
     if (isSignup) {
-      console.log("sign up");
+      dispatch(signup(data));
     } else {
       dispatch(signin(data));
+      history.push("/");
     }
   };
 

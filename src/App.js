@@ -15,9 +15,9 @@ import theme from "./theme.js";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
-      <Container maxWidth="md">
-        <Router>
+      <Router>
+        <Navbar />
+        <Container maxWidth="md">
           <Switch>
             <Route exact path="/">
               <Home />
@@ -26,8 +26,8 @@ function App() {
               <Auth />
             </Route>
           </Switch>
-        </Router>
-      </Container>
+        </Container>
+      </Router>
     </ThemeProvider>
   );
 }

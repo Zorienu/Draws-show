@@ -1,13 +1,23 @@
-import { AppBar, Box, Button, Toolbar, Typography, Avatar } from "@material-ui/core";
+import { Button, AppBar, Box, Toolbar, Typography, Avatar } from "@material-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 // styles
 import useStyles from "./styles";
 
 import pencil from "./pencil.svg";
 
+import { logout } from "redux/userSlice";
+
 const Navbar = () => {
   const classes = useStyles();
-  const author = "Jasyd caballero";
+  const profile = useSelector((state) => state.user.profile) || null;
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const handleSingin = () => history.push("/auth");
+
+  const handleLogout = () => dispatch(logout());
 
   return (
     <>
@@ -21,15 +31,27 @@ const Navbar = () => {
           </Box>
 
           <Box display="flex">
-            <Avatar>{author.charAt(0)}</Avatar>
-            <Box display={{ xs: "none", sm: "flex" }} alignItems="center">
+            {profile ? (
+              <>
+                <Avatar>{profile?.firstName?.charAt(0)}</Avatar>
+                <Box display={{ xs: "none", sm: "flex" }} alignItems="center">
+                  <Box mx={1}>
+                    <Typography variant="h6">{`${profile?.firstName} ${profile?.lastName}`}</Typography>
+                  </Box>
+                  <Box mx={1}>
+                    <Button variant="outlined" onClick={handleLogout}>
+                      Logout
+                    </Button>
+                  </Box>
+                </Box>
+              </>
+            ) : (
               <Box mx={1}>
-                <Typography variant="h6">{author}</Typography>
+                <Button variant="outlined" onClick={handleSingin}>
+                  Sign in
+                </Button>
               </Box>
-              <Box mx={1}>
-                <Button variant="outlined">Logout</Button>
-              </Box>
-            </Box>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
