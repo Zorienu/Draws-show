@@ -11,14 +11,19 @@ import Description from "components/Description";
 import useStyles from "./styles.js";
 import useContainerHeight from "hooks/useContainerHeight.js";
 
-const Post = ({ post }) => {
+// redux
+import { useDispatch } from "react-redux";
+import { likePost } from "redux/postsSlice";
+
+const Post = ({ post, profile }) => {
   const classes = useStyles();
 
   const { author, selectedFile: url, description, comments, _id: id } = post;
   const containerHeight = useContainerHeight(url);
-  const [isLiked, setIsLiked] = useState(false);
+  const dispatch = useDispatch();
+  const isLiked = post.likes.find((like) => like === profile.id);
 
-  const handleLike = () => setIsLiked(!isLiked);
+  const handleLike = () => dispatch(likePost(post._id));
 
   return (
     <Grid item xs={12} md={12}>

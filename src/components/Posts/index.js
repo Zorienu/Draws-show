@@ -8,6 +8,7 @@ import { getPosts } from "redux/postsSlice";
 
 const Posts = () => {
   const posts = useSelector((state) => state.posts.value);
+  const profile = useSelector((state) => state.user.profile);
   const dispatch = useDispatch();
 
   console.log(posts);
@@ -19,7 +20,7 @@ const Posts = () => {
   return (
     <Grid container spacing={3}>
       {posts.map((post) => (
-        <Post post={post} key={post._id} />
+        <Post post={post} profile={profile} key={post._id} />
       ))}
     </Grid>
   );

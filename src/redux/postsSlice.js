@@ -15,6 +15,11 @@ const createComment = createAsyncThunk(
   }
 );
 
+const likePost = createAsyncThunk("posts/likePost", async (postId, thunkAPI) => {
+  const { data } = await API.likePost(postId);
+  return data;
+});
+
 export const postsSlice = createSlice({
   name: "posts",
   initialState: {
@@ -31,9 +36,15 @@ export const postsSlice = createSlice({
         post._id === postId ? action.payload : post
       );
     },
+    [likePost.fulfilled]: (state, action) => {
+      const postId = action.payload._id;
+      state.value = state.value.map((post) =>
+        post._id === postId ? action.payload : post
+      );
+    },
   },
 });
 
-export { getPosts, createComment };
+export { getPosts, createComment, likePost };
 
 export default postsSlice.reducer;

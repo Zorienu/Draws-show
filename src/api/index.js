@@ -15,6 +15,7 @@ API.interceptors.request.use((config) => {
 export const fetchPosts = () => API.get("/posts");
 export const createComment = (id, comment) =>
   API.patch(`/posts/${id}/addComment`, { comment });
+export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 
 // user
 export const signin = (credentials) => API.post("/users/signin", credentials);
