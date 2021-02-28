@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import {
   Box,
   Collapse,
@@ -31,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 const Comments = ({ comments, postId }) => {
   const classes = useStyles();
   const [showComments, setShowComments] = useState(false);
+  const profile = useSelector((state) => state.user.profile);
 
   return (
     <Paper className={classes.commentContainer} elevation={3}>
@@ -54,7 +56,13 @@ const Comments = ({ comments, postId }) => {
         </div>
       </Collapse>
 
-      <AddComment id={postId} />
+      {profile ? (
+        <AddComment id={postId} setShowComments={setShowComments} />
+      ) : (
+        <Box mt={1}>
+          <Typography>Login to comment a post</Typography>
+        </Box>
+      )}
     </Paper>
   );
 };

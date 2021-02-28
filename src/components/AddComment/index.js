@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddComment = ({ id }) => {
+const AddComment = ({ id, setShowComments }) => {
   const classes = useStyles();
 
   const profile = useSelector((state) => state.user.profile);
@@ -32,6 +32,7 @@ const AddComment = ({ id }) => {
 
   const handleCreateComment = () => {
     dispatch(createComment({ id, comment }));
+    setShowComments(true);
   };
 
   return (
