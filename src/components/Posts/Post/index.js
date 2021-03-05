@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import { Grid, Card, CardContent } from "@material-ui/core";
 
 // components
@@ -41,4 +41,4 @@ const Post = ({ post, profile }) => {
   );
 };
 
-export default Post;
+export default React.memo(Post);
