@@ -65,6 +65,7 @@ const Comments = ({ comments, postId }) => {
               comment={comment}
               handleDeleteComment={handleDeleteComment}
               key={comment._id}
+              profile={profile}
             />
           ))}
         </div>

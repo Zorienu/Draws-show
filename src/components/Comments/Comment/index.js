@@ -19,8 +19,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Comment = ({ comment, handleDeleteComment }) => {
+const Comment = ({ comment, handleDeleteComment, profile }) => {
   const classes = useStyles();
+  const isCommentOwner = profile?.id === comment.authorId;
 
   const handleClick = (e) => handleDeleteComment(comment._id);
 
@@ -31,9 +32,11 @@ const Comment = ({ comment, handleDeleteComment }) => {
         <Typography variant="subtitle2">{comment.author}</Typography>
         <Typography variant="body2">{comment.comment}</Typography>
       </div>
-      <IconButton onClick={handleClick} className={classes.deleteBtn}>
-        <DeleteIcon />
-      </IconButton>
+      {isCommentOwner && (
+        <IconButton onClick={handleClick} className={classes.deleteBtn}>
+          <DeleteIcon />
+        </IconButton>
+      )}
     </div>
   );
 };
