@@ -13,6 +13,9 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import Comment from "./Comment";
 import AddComment from "components/AddComment";
 
+import { useDispatch } from "react-redux";
+import { deleteComment } from "redux/postsSlice";
+
 const useStyles = makeStyles((theme) => ({
   comments: {
     overflowY: "auto",
@@ -31,8 +34,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Comments = ({ comments, postId }) => {
   const classes = useStyles();
+
   const [showComments, setShowComments] = useState(false);
   const profile = useSelector((state) => state.user.profile);
+  const dispatch = useDispatch();
+
+  const handleDeleteComment = (commentId) => {
+    console.log("aaa");
+    dispatch(deleteComment({ postId, commentId }));
+  };
 
   return (
     <Paper className={classes.commentContainer} elevation={3}>
@@ -51,7 +61,11 @@ const Comments = ({ comments, postId }) => {
       <Collapse in={showComments}>
         <div className={classes.comments}>
           {comments.map((comment) => (
-            <Comment comment={comment} key={comment._id} />
+            <Comment
+              comment={comment}
+              handleDeleteComment={handleDeleteComment}
+              key={comment._id}
+            />
           ))}
         </div>
       </Collapse>

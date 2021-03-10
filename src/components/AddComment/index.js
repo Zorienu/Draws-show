@@ -26,6 +26,7 @@ const AddComment = ({ id, setShowComments }) => {
   const profile = useSelector((state) => state.user.profile);
 
   const dispatch = useDispatch();
+
   const [comment, setComment] = useState("");
 
   const handleChange = (e) => setComment(e.target.value);

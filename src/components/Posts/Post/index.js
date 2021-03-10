@@ -21,7 +21,7 @@ const Post = ({ post, profile }) => {
   const { author, selectedFile: url, description, comments, _id: id } = post;
   const containerHeight = useContainerHeight(url);
   const dispatch = useDispatch();
-  const isLiked = post.likes.find((like) => like === profile.id);
+  const isLiked = post.likes.find((like) => like === profile?.id);
 
   const handleLike = () => dispatch(likePost(post._id));
 

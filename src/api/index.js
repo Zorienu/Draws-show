@@ -15,6 +15,13 @@ API.interceptors.request.use((config) => {
 export const fetchPosts = () => API.get("/posts");
 export const createComment = (id, comment) =>
   API.patch(`/posts/${id}/addComment`, { comment });
+
+export const deleteComment = (postId, commentId) => {
+  console.log(postId);
+  console.log(commentId);
+  return API.patch(`/posts/${postId}/deleteComment`, { commentId });
+};
+
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 
 // user
